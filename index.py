@@ -22,7 +22,7 @@ output = open(args["index"], "w")
 for path in glob.glob(args["dataset"] + "/*.jpg"):
     # get the image file name from path
     # load the image
-    imageID = path[path.rfind("/") + 1:]
+    image_ID = path[path.rfind("/") + 1:]
     image = cv2.imread(path)
 
     # get the image features
@@ -30,7 +30,7 @@ for path in glob.glob(args["dataset"] + "/*.jpg"):
 
     # write features onto a file
     features = [str(f) for f in features]
-    output.write("%s, %s\n" % (imageID, ",".join(features)))
+    output.write("%s, %s\n" % (image_ID, ",".join(features)))
 
 # close outpte index file
 output.close()
