@@ -27,14 +27,14 @@ class ColourDescriptor:
 
         # central ellipse
         (x_length, y_length) = (int(width * 0.75) // 2, int(height * 0.75) // 2)
-        ellipse_mask = np.zeros(image.shape[:2], dtype="unit8")
+        ellipse_mask = np.zeros(image.shape[:2], dtype="uint8")
         cv2.ellipse(ellipse_mask, (centerX, centerY), (x_length, y_length), 0, 0, 360, 255, -1)
 
         # loop over rectangles
         for (startX, endX, startY, endY) in rectangles:
             # create a mask for each corner of the image
             # without the elliptical center by subtracting it
-            corner_mask = np.zeros(image.shape[:2], dtype="unit8")
+            corner_mask = np.zeros(image.shape[:2], dtype="uint8")
             cv2.rectangle(corner_mask, (startX, startY), (endX, endY), 255, -1)
             corner_mask = cv2.subtract(corner_mask, ellipse_mask)
 

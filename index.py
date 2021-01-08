@@ -19,7 +19,7 @@ cd = colourdescriptor.ColourDescriptor((8, 12, 3))
 output = open(args["index"], "w")
 
 # using glob, loop over paths of images
-for path in glob.glob(args["dataset"] + "/*.png"):
+for path in glob.glob(args["dataset"] + "/*.jpg"):
     # get the image file name from path
     # load the image
     imageID = path[path.rfind("/") + 1:]
