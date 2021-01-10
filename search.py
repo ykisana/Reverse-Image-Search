@@ -1,5 +1,5 @@
 import colourdescriptor
-import searcher as Searcher
+import searcher
 import argparse
 import cv2
 
@@ -14,22 +14,22 @@ ap.add_argument("-r", "--result-path", required=True,
 args = vars(ap.parse_args())
 
 # initialize colour descriptor
-cd = colourdescriptor((8, 12 ,3))
+cd = colourdescriptor.ColourDescriptor((8, 12 ,3))
 
 # load query and get it's features
 query = cv2.imread(args["query"])
-features = cd.describe()
+features = cd.describe(query)
 
 # perform search
-searcher = Searcher(args["index"])
+searcher = searcher.Searcher(args["index"])
 results = searcher.search(features)
 
 # display query
 cv2.imshow("Query", query)
 
 # loop over results
-for (score, results_id) in results:
-    result = cv2.imread(args["result_path"] + "/" + results_id)
+for (score, result_id) in results:
+    result = cv2.imread(result_id)
     cv2.imshow("Result", result)
     cv2.waitKey(0)
 
