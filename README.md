@@ -1,6 +1,6 @@
 # Shopify Developer Internship Challenge - Summer 2021
  
-Image repository with reverse image search and single/bulk photo additions.
+Image repository with reverse image search and single/bulk photo additions. Implemented in Python using OpenCV
 
 ## How to use
 1. Open run.py, this will take you to the proper prompts
@@ -19,7 +19,6 @@ All the features are either computed at the first run of a program or when new i
 
 Modified the [pyimagesearch.com](https://www.pyimagesearch.com/2014/12/01/complete-guide-building-image-search-engine-python-opencv/) guide to implement reverse image search.
 
-Implemented in Python using OpenCV
 
 
 
