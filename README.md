@@ -5,7 +5,7 @@ Image repository with reverse image search and single/bulk photo additions. Impl
 ## How to use
 1. Open run.py, this will take you to the proper prompts
 2. Select if you would like to add images to the repository, do a search or terminate
-3. Enter prompted paths
+3. Enter prompted paths to images
 
 ## Image Addition
 The user has the option to add a singular image or bulk images. When a single image is to be added, it simply copies the file to the "images" directory. For  bulk it will copy all images in the specified folder to our "images" folder.
