@@ -2,10 +2,15 @@ import os
 
 
 def main():
+    # loop state program, performs actions based on user inputs
+
+    # first create index.csv if it doesn't exist
+    do_index()
+
     # variable to end while loop
     end = False
 
-    # loop for program and user input
+    # loop for program
     while not end:
         # prompt for user
         print("What would you like to do?")
@@ -39,12 +44,6 @@ def main():
 def do_search():
     # done through shell commands (using os)
 
-    # create index.csv using index.py if it doesn't already exist
-    is_index = os.path.isfile("index.csv")
-    if not is_index:
-        index_cmd = "python index.py --dataset images --index index.csv"
-        os.system(index_cmd)
-
     # prompt user for path of images to be search
     print("Please enter the path of the image you are trying to look up")
     img_path = input()
@@ -56,13 +55,25 @@ def do_search():
         return
 
     # image search done using search.py
-    search_cmd = "python search.py --index index.csv --query "\
+    search_cmd = "python search.py --index index.csv --query " \
                  + img_path + " --result-path images"
     os.system(search_cmd)
 
 
 def do_add():
+    # done through shell commands (using os)
 
+    pass
+
+
+def do_index():
+    # create index.csv using index.py if it doesn't already exist
+    # done through shell commands (using os)
+    is_index = os.path.isfile("index.csv")
+    if not is_index:
+        print("indexing...")
+        index_cmd = "python index.py --dataset images --index index.csv"
+        os.system(index_cmd)
 
 
 main()
