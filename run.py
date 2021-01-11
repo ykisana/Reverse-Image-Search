@@ -1,4 +1,8 @@
+from index import write_index
+import colourdescriptor
 import os
+import shutil
+import glob
 
 
 def main():
@@ -24,7 +28,7 @@ def main():
 
         # check input and run appropriate functions
         if input_number == '1':
-            pass
+            do_add()
 
         # runs do_search to perform a search
         elif input_number == '2':
@@ -51,7 +55,7 @@ def do_search():
     # check if the path is valid
     is_file = os.path.isfile(img_path)
     if not is_file:
-        print("Path not valid.")
+        print("Path not valid.\n")
         return
 
     # image search done using search.py
@@ -62,8 +66,51 @@ def do_search():
 
 def do_add():
     # done through shell commands (using os)
+    # files copied using shutil
 
-    pass
+    # use colourdescriptor for features of new images
+    cd = colourdescriptor.ColourDescriptor((8, 12, 3))
+
+    output = open("index.csv", "w")
+
+    # prompt user for single or bulk images
+    print("How many images would you like to add?")
+    print("[1] Single")
+    print("[2] Bulk")
+    input_number = input()
+
+    # if single it adds and indexes a single images
+    if input_number == "1":
+        print("Please enter the path of the image you want to add")
+        img_path = input()
+
+        # check if path is valid
+        is_image = os.path.isfile(img_path)
+        if not is_image:
+            print("Path not valid.\n")
+            return
+
+        write_index(img_path, cd, output)
+        shutil.copy(img_path, "images")
+
+    elif input_number == "2":
+        print("Please enter the path of the folder containing the images to add")
+        folder_path = input()
+
+        # check if path is a valid directory
+        is_folder = os.path.isdir(folder_path)
+        if not is_folder:
+            print("Path not valid.\n")
+            return
+
+        for path in glob.glob(folder_path + "/*.jpg"):
+            write_index(path, cd, output)
+            shutil.copy(path, "images")
+
+    else:
+        print("Not a valid Input.\n")
+
+    output.close()
 
 
 def do_index():
