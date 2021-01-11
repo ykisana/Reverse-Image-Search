@@ -13,7 +13,7 @@ The user has the option to add a singular image or bulk images. When a single im
 Everytime an image is added, it's feature is calculated and indexed for Image Search use.
 
 ## Reverse Image Search
-For the reverse Image Search, a feature representing the colour mapping for each image is excracted. All the features are stored in a csv file. When a search is performed, all the features are compared, the closest 10 are displayed. The comparison is done through a chi-squared distance.
+For the Reverse Image Search, a feature representing the colour mapping for each image is excracted. All the features are stored in a csv file. When a search is performed, all the features are compared, the closest 10 are displayed. The comparison is done through a chi-squared distance.
 
 All the features are either computed at the first run of a program or when new images are added.
 
