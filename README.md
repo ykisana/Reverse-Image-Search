@@ -1,4 +1,4 @@
-# Shopify Developer Internship Challenge - Summer 2021
+# Reverse Image Search with OpenCV
 
 Image repository with reverse image search and single/bulk photo additions. Implemented in Python using OpenCV
 
